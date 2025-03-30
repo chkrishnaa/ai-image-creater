@@ -3,8 +3,6 @@ const promptForm = document.querySelector(".prompt-form");
 const promptInput = document.querySelector(".prompt-input");
 const promptBtn = document.querySelector(".prompt-btn");
 const generateBtn = document.querySelector(".generate-btn");
-
-// ✅ Use correct ID selectors
 const modelSelect = document.getElementById("model-select");
 const countSelect = document.getElementById("count-select");
 const ratioSelect = document.getElementById("ratio-select");
@@ -64,7 +62,6 @@ const examplePrompts = [
 ];
 
 const API_KEY = "YOUR_API_KEY";
-// Theme toggle logic
 (() => {
   const savedTheme = localStorage.getItem("theme");
   const systemPrefersDark = window.matchMedia(
@@ -89,7 +86,6 @@ const toggleTheme = () => {
     : "fa-solid fa-moon";
 };
 
-// ✅ Ensure elements exist before accessing `.value`
 const handleFormSubmit = (e) => {
   e.preventDefault();
 
@@ -106,7 +102,6 @@ const handleFormSubmit = (e) => {
   createImageCards(selectModel, imageCount, aspectRatio, promptText);
 };
 
-// Function to create image cards
 const createImageCards = (selectModel, imageCount, aspectRatio, promptText) => {
   gridGallery.innerHTML = "";
   for (let i = 0; i < imageCount; i++) {
@@ -128,7 +123,6 @@ const getImageDimensions = (aspectRatio, baseSize = 512) => {
   let calculatedWidth = Math.round(width * scaleFactor);
   let calculatedHeight = Math.round(height * scaleFactor);
 
-  // Ensure dimensions are multiples of 16 (AI model requirements)
   calculatedWidth = Math.floor(calculatedWidth / 16) * 16;
   calculatedHeight = Math.floor(calculatedHeight / 16) * 16;
 
@@ -191,7 +185,7 @@ const updateImageCard = (imgIndex, imgUrl) => {
                 </a>
               </div>`;
 };
-// Event Listeners
+
 promptBtn.addEventListener("click", () => {
   const prompt =
     examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
